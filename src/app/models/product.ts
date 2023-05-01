@@ -1,4 +1,4 @@
-import { Author } from "./author";
+import { Author } from './author';
 
 export class Product {
   constructor(
@@ -10,6 +10,6 @@ export class Product {
     public subtitle: string,
     public description: string,
     public author: Author,
-    public price: number,
+    public price: number
   ) {}
 }

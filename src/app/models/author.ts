@@ -4,8 +4,8 @@ export class Author {
     public version: number,
     public dateCreated: string,
     public lastUpdated: string,
-    public firstName: String,
-    public lastName: String,
-    public image: String
+    public firstName: string,
+    public lastName: string,
+    public image: string
   ) {}
 }

@@ -21,6 +21,6 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     HttpClientModule,
     RouterModule,
-  ]
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}
