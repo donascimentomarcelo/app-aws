@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [],
   imports: [
@@ -12,12 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
   ],
   exports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule,
   ]
 })
 export class CoreModule { }
