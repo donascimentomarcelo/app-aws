@@ -1,1 +1,24 @@
-<p>list works!</p>
+<app-page-header page-title='Crane Life Style'></app-page-header>
+
+<app-bread-crumb [items]="[{text: 'listagem'}]"></app-bread-crumb>
+
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Subtitle</th>
+      <th scope="col">Price</th>
+      <th scope="col">Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.subtitle}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.author.lastName}}, {{product.author.firstName}}</td>
+    </tr>
+  </tbody>
+</table>
