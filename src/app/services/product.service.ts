@@ -14,4 +14,8 @@ export class ProductService {
   public getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(`${env.apiUrl}${Paths.PRODUCTS}`);
   }
+
+  public findOne(id: string): Observable<Product> {
+    return this.http.get<Product>(`${env.apiUrl}${Paths.PRODUCTS}/${id}`);
+  }
 }
