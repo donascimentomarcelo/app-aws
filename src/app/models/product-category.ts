@@ -1,6 +1,6 @@
 export class ProductCategory {
   constructor(
-    public id: string,
+    public id: number,
     public version: number,
     public dateCreated: string,
     public lastUpdated: string,

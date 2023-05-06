@@ -1,4 +1,4 @@
-import { ProductService } from 'src/app/services/product.service';
+import { ProductService } from './../services/product.service';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
