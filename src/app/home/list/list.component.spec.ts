@@ -6,8 +6,7 @@ import { of } from 'rxjs';
 
 import { ListComponent } from './list.component';
 import { SharedModule } from './../../shared/shared.module';
-import { Product } from './../../models/product';
-import { Author } from './../../models/author';
+import { Product, ProductBuilder } from './../../models/product';
 import { ProductService } from './../../services/product.service';
 import { Router } from '@angular/router';
 import { DetailsComponent } from '../details/details.component';
@@ -35,7 +34,7 @@ describe('ListComponent', () => {
       providers: [ProductService],
     }).compileComponents();
 
-    product = buildProduct();
+    product = ProductBuilder.getProduct();
 
     fixture = TestBed.createComponent(ListComponent);
     router = TestBed.get(Router);
@@ -84,29 +83,4 @@ describe('ListComponent', () => {
     component.details(product);
     expect(navigateSpy).toHaveBeenCalledWith([`/${product.id}/details`]);
   });
-
-  const buildProduct = () => {
-    return new Product(
-      1,
-      1,
-      '05-05-2023',
-      '05-05-2023',
-      'Spring Training',
-      'Spring Boot + Hibernate',
-      'Full training about spring boot',
-      buildAuthor(),
-      100
-    );
-  };
-  const buildAuthor = () => {
-    return new Author(
-      1,
-      1,
-      '05-05-2023',
-      '05-05-2023',
-      'Kyle',
-      'Crane',
-      'photo.jpg'
-    );
-  };
 });

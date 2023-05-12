@@ -19,4 +19,20 @@ describe('BreadCrumbComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render items on the bread crumb', () => {
+    component.items = [{ text: 'last', link: '/fake' }];
+    component.isTheLastItem({ text: 'last' });
+
+    const isTheLastItem = !component.isTheLastItem({
+      text: 'last',
+      link: '/fake',
+    });
+
+    fixture.detectChanges();
+    const el = fixture.nativeElement.querySelector('.is-the-last-item');
+
+    expect(isTheLastItem).toBeTruthy();
+    expect(el.textContent.trim()).toBe('last');
+  });
 });

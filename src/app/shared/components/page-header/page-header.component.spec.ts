@@ -19,4 +19,11 @@ describe('PageHeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get the title', () => {
+    component.pageTitle = 'AWS APP';
+    fixture.detectChanges();
+    const el = fixture.nativeElement.querySelector('.border-left');
+    expect(el.textContent.trim()).toBe('AWS APP');
+  });
 });
