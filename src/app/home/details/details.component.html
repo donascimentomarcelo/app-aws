@@ -1,1 +1,17 @@
-<p>details works!</p>
+<app-page-header page-title='Crane Life Style'></app-page-header>
+
+<app-bread-crumb [items]="[{text: 'list', link: '/'}, {text: 'details'}]"></app-bread-crumb>
+
+<div class="card" style="width: 100%;">
+  <div class="card-body text-white bg-dark">
+    <h5 class="card-title"># {{product.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{product.subtitle}}</h6>
+    <h6 class="card-subtitle mb-2 float-end text-white">Price: {{product.price | currency : 'BRL'}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Version: v{{product.version}}</h6>
+    <p class="card-text">{{product.description}}
+    </p>
+    <div class="d-flex align-items-end justify-content-end">
+      <a routerLink="/" class="btn btn-warning btn-color d-inline float-right">Back</a>
+    </div>
+  </div>
+</div>
