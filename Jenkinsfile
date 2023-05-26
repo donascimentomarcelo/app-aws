@@ -2,6 +2,9 @@ pipeline {
   agent {
     docker { image 'node:latest' }
   }
+  triggers {
+    pollSCM '* * * * *'
+  }
   stages {
     stage('Install') {
       steps { sh 'npm install' }
