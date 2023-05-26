@@ -15,6 +15,7 @@ export class ProductResolver implements Resolve<Product> {
   constructor(private productService: ProductService) {}
   resolve(
     route: ActivatedRouteSnapshot,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     state: RouterStateSnapshot
   ): Observable<Product> {
     return this.productService.findOne(route.paramMap.get('id') || '');
