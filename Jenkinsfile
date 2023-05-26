@@ -1,28 +1,26 @@
 pipeline {
-  agent {
-    docker { image 'node:latest' }
-  }
-  triggers {
-    pollSCM '* * * * *'
-  }
-  stages {
-    stage('Install') {
-      steps { sh 'npm install' }
+    agent any
+    triggers {
+        pollSCM '* * * * *'
     }
+    stages {
+      stage('Install') {
+        steps { sh 'npm install' }
+      }
 
-    stage('Test') {
-      parallel {
-        stage('Static code analysis') {
-            steps { sh 'npm lint' }
-        }
-        stage('Unit tests') {
-            steps { sh 'npm test' }
+      stage('Test') {
+        parallel {
+          stage('Static code analysis') {
+              steps { sh 'npm lint' }
+          }
+          stage('Unit tests') {
+              steps { sh 'npm test' }
+          }
         }
       }
-    }
 
-    stage('Build') {
-      steps { sh 'npm run build' }
+      stage('Build') {
+        steps { sh 'npm run build' }
+      }
     }
-  }
 }
