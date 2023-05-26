@@ -23,7 +23,7 @@ describe('PageHeaderComponent', () => {
   it('should get the title', () => {
     component.pageTitle = 'AWS APP';
     fixture.detectChanges();
-    const el = fixture.nativeElement.querySelector('.border-left');
+    const el = fixture.nativeElement.querySelector('.navbar-brand');
     expect(el.textContent.trim()).toBe('AWS APP');
   });
 });
