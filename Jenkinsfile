@@ -12,7 +12,7 @@ pipeline {
       stage('Test') {
         parallel {
           stage('Static code analysis') {
-              steps { sh 'npm lint' }
+              steps { sh 'npm run lint' }
           }
           stage('Unit tests') {
               steps { sh 'npm test' }
