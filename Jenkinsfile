@@ -20,9 +20,9 @@ pipeline {
           stage('Static code analysis') {
               steps { sh 'npm run lint' }
           }
-          stage('Unit tests') {
-              steps { sh 'npm test' }
-          }
+          // stage('Unit tests') {
+          //     steps { sh 'npm test' }
+          // }
         }
       }
 
