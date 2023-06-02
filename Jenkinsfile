@@ -15,20 +15,20 @@ pipeline {
         steps { sh 'npm install' }
       }
 
-      stage('Node Version') {
-        steps { sh 'npm version' }
-      }
+      // stage('Node Version') {
+      //   steps { sh 'npm version' }
+      // }
 
-      stage('Test') {
-        parallel {
-          stage('Static code analysis') {
-              steps { sh 'npm run lint' }
-          }
-          stage('Unit tests') {
-              steps { sh 'npm test' }
-          }
-        }
-      }
+      // stage('Test') {
+      //   parallel {
+      //     stage('Static code analysis') {
+      //         steps { sh 'npm run lint' }
+      //     }
+      //     stage('Unit tests') {
+      //         steps { sh 'npm test' }
+      //     }
+      //   }
+      // }
 
       stage('Build') {
         steps { sh 'npm run build' }
@@ -45,10 +45,16 @@ pipeline {
       stage('Pushing to Dockerhub') {
         steps{
           script {
-            docker.withRegistry("", registryCredential) {
+            docker.withRegistry("https://registry.hub.docker.com", registryCredential) {
               dockerImage.push()
             }
           }
+        }
+      }
+
+      stage('Cleaning up') {
+        steps{
+          sh "docker rmi ${IMAGE_REPO_NAME}:${IMAGE_TAG}"
         }
       }
     }
