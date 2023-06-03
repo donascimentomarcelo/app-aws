@@ -4,8 +4,7 @@ pipeline {
     environment {
         IMAGE_REPO_NAME="donascimentomarcelo/app-aws"
         IMAGE_TAG="${env.BUILD_ID}"
-        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
-	      registryCredential = credentials('docker-hub')
+	      DOCKER_HUB_LOGIN = credentials('docker-hub')
     }
     triggers {
         pollSCM '* * * * *'
@@ -44,11 +43,13 @@ pipeline {
 
       stage('Pushing to Dockerhub') {
         steps{
-          script {
-            docker.withRegistry("https://registry.hub.docker.com", registryCredential) {
-              dockerImage.push()
-            }
-          }
+            sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
+            sh 'docker push ${IMAGE_REPO_NAME}:${IMAGE_TAG}'
+          // script {
+          //   docker.withRegistry("", registryCredential) {
+          //     dockerImage.push()
+          //   }
+          // }
         }
       }
 
