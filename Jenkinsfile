@@ -18,16 +18,16 @@ pipeline {
       //   steps { sh 'npm version' }
       // }
 
-      // stage('Test') {
-      //   parallel {
-      //     stage('Static code analysis') {
-      //         steps { sh 'npm run lint' }
-      //     }
-      //     stage('Unit tests') {
-      //         steps { sh 'npm test' }
-      //     }
-      //   }
-      // }
+      stage('Test') {
+        parallel {
+          stage('Static code analysis') {
+              steps { sh 'npm run lint' }
+          }
+          stage('Unit tests') {
+              steps { sh 'npm test' }
+          }
+        }
+      }
 
       stage('Build') {
         steps { sh 'npm run build' }
