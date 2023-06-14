@@ -36,7 +36,7 @@ pipeline {
       stage('Build Docker Image') {
         steps{
           script {
-            dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+            dockerImage = docker.build "${IMAGE_REPO_NAME}:latest"
           }
         }
       }
@@ -44,7 +44,7 @@ pipeline {
       stage('Pushing to Dockerhub') {
         steps{
             sh 'docker login --username=$DOCKER_HUB_LOGIN_USR --password=$DOCKER_HUB_LOGIN_PSW'
-            sh 'docker push ${IMAGE_REPO_NAME}:${IMAGE_TAG}'
+            sh 'docker push ${IMAGE_REPO_NAME}:latest'
           // script {
           //   docker.withRegistry("", registryCredential) {
           //     dockerImage.push()
