@@ -35,6 +35,7 @@ pipeline {
 
       stage('Build Docker Image') {
         steps{
+          sh 'docker image prune -a'
           script {
             dockerImage = docker.build "${IMAGE_REPO_NAME}:latest"
           }
