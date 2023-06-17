@@ -16,8 +16,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Docker Build locally
 
-Run `docker build -t donascimentomarcelo/app-aws:1.0 .` to execute the docker image
+Run `docker build -t donascimentomarcelo/app-aws:latest .` to execute the docker image
 
-Run `docker run -d -p 80:80 donascimentomarcelo/app-aws:1.0` to start the container
+Run `docker run -d -p 3000:3000 donascimentomarcelo/app-aws:latest` to start the container
 
-Navigate to `http://localhost:4200/`
+Navigate to `http://localhost:8000/`

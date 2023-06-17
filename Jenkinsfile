@@ -54,9 +54,19 @@ pipeline {
         }
       }
 
+      stage('Deploy CloudFormation') {
+        steps {
+          script {
+            withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+              sh 'aws cloudformation deploy --stack-name app-aws --template-file ecs.yaml'
+            }
+          }
+        }
+      }
+
       stage('Cleaning up') {
         steps{
-          sh "docker rmi ${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+          sh "docker rmi ${IMAGE_REPO_NAME}:latest"
         }
       }
     }
