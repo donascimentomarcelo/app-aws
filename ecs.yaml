@@ -108,23 +108,13 @@ Resources:
       VpcId: !Ref VPC
       SecurityGroupIngress:
         - CidrIpv6: ::/0
-          FromPort: 80
-          ToPort: 80
+          FromPort: 443
+          ToPort: 443
           IpProtocol: TCP
           Description: Inbound rule for IPv6 traffic
         - CidrIp: 0.0.0.0/0
-          FromPort: 80
-          ToPort: 80
-          IpProtocol: TCP
-          Description: Inbound rule for IPv4 traffic
-        - CidrIpv6: ::/0
-          FromPort: 3000
-          ToPort: 3000
-          IpProtocol: TCP
-          Description: Inbound rule for IPv6 traffic
-        - CidrIp: 0.0.0.0/0
-          FromPort: 3000
-          ToPort: 3000
+          FromPort: 443
+          ToPort: 443
           IpProtocol: TCP
           Description: Inbound rule for IPv4 traffic
 
@@ -186,8 +176,10 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::Listener
     Properties:
       LoadBalancerArn: !Ref LoadBalancer
-      Port: 80
-      Protocol: HTTP
+      Port: 443
+      Protocol: HTTPS
+      Certificates:
+        - CertificateArn: arn:aws:acm:us-east-1:462839258964:certificate/19f9ec3d-8e4e-4f3b-951e-75c30a54cf52
       DefaultActions:
         - Type: forward
           TargetGroupArn: !Ref TargetGroup
