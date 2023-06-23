@@ -1,0 +1,6 @@
+namespace: default
+deployment:
+  name: a-name
+api:
+  image: donascimentomarcelo/app-aws:latest
+  serviceType: ClusterIP

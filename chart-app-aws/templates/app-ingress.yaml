@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-angular-app
+spec:
+  rules:
+  - host: app.cranelifestyle.fun
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Release.Name }}-angular-service
+          servicePort: 80

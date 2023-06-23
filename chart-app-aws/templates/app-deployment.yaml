@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-angular-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-angular-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-angular-app
+    spec:
+      containers:
+        - name: angular-app
+          image: donascimentomarcelo/app-aws:latest
+          ports:
+            - containerPort: 80
