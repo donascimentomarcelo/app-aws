@@ -216,5 +216,5 @@ Outputs:
     Value: !GetAtt LoadBalancer.DNSName
 
   Listener:
-    Description: A reference to a port 8080 listener
+    Description: A reference to a port 3000 listener
     Value: !Ref LoadBalancerListener
