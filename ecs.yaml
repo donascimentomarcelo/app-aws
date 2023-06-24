@@ -199,7 +199,7 @@ Resources:
   TargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
-      Name: PROD-default
+      Name: tg-default-app
       VpcId: !Ref VPC
       Port: 3000
       Protocol: HTTP
