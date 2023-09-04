@@ -21,3 +21,5 @@ Run `docker build -t donascimentomarcelo/app-aws:latest .` to execute the docker
 Run `docker run -d -p 3000:3000 donascimentomarcelo/app-aws:latest` to start the container
 
 Navigate to `http://localhost:8000/`
+
+# PDI
